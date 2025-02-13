@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Permite o acesso direto a arquivos existentes (CSS, JS, imagens, etc.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redireciona todas as outras requisições para o index.php
+RewriteRule ^$ public/index.php [L]
+RewriteRule (.*) public/index.php?page=$1 [QSA,L]
